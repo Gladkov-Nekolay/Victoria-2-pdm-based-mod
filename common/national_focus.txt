@@ -1,0 +1,567 @@
+promotion_focus =
+{
+	promote_aristocrats =
+	{
+		aristocrats = 0.10 #10% more likeley to become artisans
+		icon = 2
+		outliner_show_as_percent = yes
+
+                limit = {
+                       owner = { NOT = { government = proletarian_dictatorship } ai = no }
+                       NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                       NOT = { state_scope = { aristocrats = 0.021 } }
+                }
+	}
+
+	promote_artisans =
+	{
+		artisans = 0.10 #10% more likeley to become this type
+		icon = 3
+		outliner_show_as_percent = yes
+                limit = { owner = { ai = no } NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } } }
+	}
+
+	promote_bureaucrats =
+	{
+		bureaucrats = 0.10 #10% more likeley to become this type
+		icon = 4
+		outliner_show_as_percent = yes
+                limit = {
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                        state_scope = { any_owned_province = { any_pop = { OR = { is_accepted_culture = yes is_primary_culture = yes } } } }
+	        }
+        }
+
+	promote_capitalists =
+	{
+		capitalists = 0.10 #10% more likeley to become this type
+		icon = 5
+		outliner_show_as_percent = yes
+		limit = { 
+                        owner = { NOT = { government = proletarian_dictatorship } civilized = yes }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                        is_colonial = no
+		}
+
+	}
+	
+	promote_clergymen =
+	{
+		clergymen = 0.10 #10% more likeley to become this type
+		icon = 6
+		outliner_show_as_percent = yes
+                limit = {
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                        NOT = { state_scope = { clergymen = 0.041 } }
+                        OR = {
+                               is_colonial = no
+                               owner = { ai = no }
+                        }
+                }
+	}
+
+	promote_clerks =
+	{
+		clerks = 0.10 #10% more likeley to become this type
+		icon = 7
+		outliner_show_as_percent = yes
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                        work_available = { worker = clerks }
+                        NOT = { state_scope = { is_colonial = yes } }
+                        OR = {
+                               NOT = { unemployment_by_type = { type = clerks value = 0.5 } }
+                               owner = { ai = no }
+                        }
+		}
+	}
+
+	promote_craftsmen =
+	{
+		craftsmen = 0.10 #10% more likeley to become this type
+		icon = 8
+		outliner_show_as_percent = yes
+                limit = {
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        work_available = { worker = craftsmen }
+                        NOT = { state_scope = { is_colonial = yes } }
+                        NOT = { state_scope = { any_owned_province = { unemployment_by_type = { type = craftsmen value = 0.5 } } } }
+                }
+	}
+
+	promote_farmers =
+	{
+		farmers = 0.10 #10% more likeley to become this type
+		outliner_show_as_percent = yes
+		icon = 9
+                limit = {
+                        owner = { ai = no }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        work_available = { worker = farmers }
+                }
+	}
+	
+	promote_labourers =
+	{
+		labourers = 0.10 #10% more likeley to become this type
+		outliner_show_as_percent = yes
+		icon = 10
+                limit = {
+                        owner = { ai = no }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        work_available = { worker = labourers }
+                }
+	}
+
+	promote_officers =
+	{
+		officers = 0.10 #10% more likeley to become this type
+		icon = 11
+		outliner_show_as_percent = yes
+                limit = {
+                        owner = { ai = no }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                        NOT = { state_scope = { officers = 0.003 } }
+                        OR = {
+                              NOT = { state_scope = { is_colonial = yes } }
+                              owner = { has_country_flag = colonial_armies }
+                        }
+                }
+	}
+
+	promote_soldiers =
+	{
+		soldiers = 0.10 #10% more likeley to become this type
+		icon = 12
+		outliner_show_as_percent = yes
+                limit = {
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { state_scope = { soldiers = 0.05 } }
+                        OR = {
+                              NOT = { state_scope = { is_colonial = yes } }
+                              owner = { has_country_flag = colonial_armies }
+                        }
+                        OR = {
+                              NOT = { state_scope = { soldiers = 0.048 } }
+                              owner = { ai = no }
+                        }
+                }
+	}
+}
+
+
+heavy_industry_focus =
+{	
+	encourage_rail = 
+	{
+		railroads = 10 #Capitalists 100% more likeley to choose railroads
+		icon = 13
+                limit = {
+                        owner = { ai = no }
+                        NOT = { owner = { economic_policy = planned_economy } }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+
+                }
+	}
+	
+	basic_industry_focus =
+	{
+		steel = 10.5
+		bronze = 10.5
+		cement = 10.5
+		icon = 14
+		limit = { 
+			civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	mechanical_industry_focus =
+	{
+		machine_parts = 10.5
+		electric_gear = 10.5
+		icon = 15
+		limit = { 
+			civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	wood_focus = 
+	{
+		paper = 10.5
+		lumber = 10.5
+		icon = 16
+		limit = { 
+			civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	shipping_focus =
+	{
+		steamer_convoy = 10.5
+		clipper_convoy = 10.5
+		icon = 17
+		limit = { 
+			civilized = yes
+                        state_scope = { any_owned_province = { port = yes } }
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	automation_focus =
+	{
+		aeroplanes = 10.5
+		automobiles = 10.5
+		icon = 18
+		limit = { 
+                        year = 1880
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	chemical_focus =
+	{
+		fertilizer = 10.5
+		dye = 10.5
+		icon = 19
+		limit = { 
+                        year = 1880
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	oil_focus =
+	{
+		fuel = 10.5
+		oil = 10.5
+		rubber = 10.5
+		icon = 20
+		limit = { 
+                        year = 1870
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	electricity_focus =
+	{
+		electric_power = 10.5
+		icon = 21
+		limit = { 
+			civilized = yes
+                        year = 1880
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+}
+
+consumer_goods_focus =
+{
+	
+	furniture_focus = 
+	{
+		luxury_furniture = 10.5
+		furniture = 10.5
+		icon = 22
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	textile_focus =
+	{
+		luxury_clothes = 10.5
+		regular_clothes = 10.5
+		fabric = 10.5
+		silk = 10.5
+		icon = 23
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	food_focus = 
+	{
+		canned_food = 10.5
+		sugar = 10.5
+		icon = 24
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	bottling_focus = 
+	{
+		liquor = 10.5
+		wine = 10.5
+		glass = 10.5
+		icon = 25
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	leather_focus = 
+	{
+		shoes = 10.5
+		boots = 10.5
+		icon = 26
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	tobacco_focus = 
+	{
+		cigars = 10.5
+		cigarettes = 10.5
+		icon = 27
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	pharmaceuticals_focus = 
+	{
+		pharmaceuticals = 10.5
+		icon = 28
+		limit = { 
+                        year = 1840
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	electrical_focus =
+	{
+		radio = 10.5
+		telephones = 10.5
+		icon = 29
+		limit = { 
+                        year = 1880
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+
+	commercial_focus =
+	{
+		financial_services = 10.5
+		shares = 10.5
+		icon = 30
+		limit = {
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+}
+
+military_goods_focus =
+{
+	
+	munitions_focus = 
+	{
+		gunpowder = 10.5
+		explosives = 10.5
+		ammunition = 10.5
+		icon = 31
+		limit = {                         
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	armaments_focus = 
+	{
+		artillery = 10.5
+		small_arms = 10.5
+		barrels = 10.5
+		icon = 32
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}
+	
+	cavalry_focus =
+	{
+		horses = 10.5
+		icon = 33
+		limit = { 
+                        civilized = yes
+                        NOT = { state_scope = { any_owned_province = { NOT = { controlled_by = THIS } } } }
+                        NOT = { owner = { economic_policy = planned_economy } }
+
+                        is_colonial = no
+		}
+	}	
+}
+
+immigration_colonization_focus = 
+{	
+	immigration =
+	{
+		immigrant_attract = 1 #increases attactiveness to immigrants by 100 %
+		global_immigrant_attract = 0.3
+		icon = 35
+		limit = { 
+			NOT = { continent = europe }
+			civilized = yes
+		}
+	}
+	increase_tension =
+	{
+		icon = 43
+		has_flashpoint = yes
+		own_provinces = no
+
+                flashpoint_tension = 0.15
+		limit = { 
+			OR = {
+				THIS = {is_greater_power = yes }
+				AND = { 
+					THIS = { is_secondary_power = yes }
+					continent = THIS
+				}
+				AND = { 
+					THIS = { civilized = yes }
+					state_scope = {
+						any_owned_province = {
+							any_neighbor_province = { owned_by = THIS }
+						}
+					}
+				}
+				is_core = THIS
+			}
+		}
+	}
+}
+
+party_loyalty_focus =
+{
+	fascist_focus =
+	{
+		ideology = fascist
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 36
+	}
+	
+	reactionary_focus =
+	{
+		ideology = reactionary
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 37
+	}
+	
+	conservative_focus =
+	{
+		ideology = conservative
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 38
+	}
+	
+	socialist_focus =
+	{
+		ideology = socialist
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 39
+	}
+	
+	communist_focus =
+	{
+		ideology = communist
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 40
+	}
+	
+	liberal_focus =
+	{
+		ideology = liberal
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 41
+	}
+	
+	anarcho_liberal_focus =
+	{
+		ideology = anarcho_liberal
+		loyalty_value = 0.003 # By that much pops will be more loyal
+		icon = 42
+	}
+}
+
+
